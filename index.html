@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Differently Abled Assistive System</title>
+<style>
+body{margin:0;font-family:Arial;background:#eef2f7}
+.section{display:none;padding:16px;min-height:100vh}
+.active{display:block}
+nav{display:flex;flex-wrap:wrap;position:sticky;top:0;background:#111;color:#fff}
+nav button{flex:1;border:none;padding:12px;background:#111;color:#fff}
+nav button:hover{background:#333}
+.big-btn{width:100%;padding:14px;font-size:16px;margin:6px 0}
+input,select,textarea{width:100%;padding:10px;margin:6px 0}
+.login{background:#3949ab;color:#fff}
+.lang{background:#6a1b9a;color:#fff}
+.stt{background:#fff9c4}
+.tts{background:#e3f2fd}
+.govt{background:#e8f5e9}
+.ngo{background:#f3e5f5}
+.school{background:#fce4ec}
+.medicine{background:#fff3e0}
+.reminder{background:#ffecb3}
+.emergency{background:#ffebee}
+.profile{background:#eceff1}
+.card{background:#fff;padding:12px;margin:8px 0;border-radius:6px}
+.flash{animation:flash 1s infinite}
+@keyframes flash{0%{background:red}50%{background:white}100%{background:red}}
+a{text-decoration:none;color:#1565c0}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<section id="login" class="section active login">
+<h2>Login</h2>
+<input placeholder="Username">
+<button class="big-btn" onclick="openSec('lang')">Login</button>
+</section>
+
+<!-- LANGUAGE -->
+<section id="lang" class="section lang">
+<h2>Select Language</h2>
+<select id="langSel">
+<option value="en-IN">English</option>
+<option value="ta-IN">Tamil</option>
+<option value="hi-IN">Hindi</option>
+</select>
+<button class="big-btn" onclick="startApp()">Continue</button>
+</section>
+
+<!-- NAVIGATION -->
+<nav id="nav" style="display:none">
+<button onclick="openSec('stt')">Speech→Text</button>
+<button onclick="openSec('tts')">Text→Speech</button>
+<button onclick="openSec('phrases')">Phrases</button>
+<button onclick="openSec('govt')">Schemes</button>
+<button onclick="openSec('ngo')">NGOs</button>
+<button onclick="openSec('school')">Schools</button>
+<button onclick="openSec('medicine')">Medicine</button>
+<button onclick="openSec('reminder')">Reminder</button>
+<button onclick="openSec('emergency')">Emergency</button>
+<button onclick="openSec('profile')">Profile</button>
+</nav>
+
+<!-- SPEECH TO TEXT -->
+<section id="stt" class="section stt">
+<h3>Speech to Text</h3>
+<button class="big-btn" onclick="startSTT()">Start</button>
+<textarea id="sttOut"></textarea>
+</section>
+
+<!-- TEXT TO SPEECH -->
+<section id="tts" class="section tts">
+<h3>Text to Speech</h3>
+<textarea id="ttsText"></textarea>
+<button class="big-btn" onclick="speakText(ttsText.value)">Speak</button>
+</section>
+
+<!-- AUTO-PHRASES -->
+<section id="phrases" class="section govt">
+<h3>Automatic Phrases</h3>
+<div id="phraseBtns"></div>
+</section>
+
+<!-- GOVERNMENT SCHEMES -->
+<section id="govt" class="section govt">
+<h3>Government Schemes (Eligibility Included)</h3>
+<div class="card"><b>Disability Pension</b><br>Eligibility: 40% disability<br>
+<a href="https://www.india.gov.in" target="_blank">Apply</a></div>
+<div class="card"><b>UDID Card</b><br>Eligibility: Certified disability<br>
+<a href="https://www.swavlambancard.gov.in" target="_blank">Apply</a></div>
+<div class="card"><b>ADIP Scheme</b><br>Eligibility: Income based PwD<br>
+<a href="https://socialjustice.gov.in" target="_blank">Apply</a></div>
+<div class="card"><b>Scholarship for PwD</b><br>Eligibility: Disabled students<br>
+<a href="https://scholarships.gov.in" target="_blank">Apply</a></div>
+<div class="card"><b>NHFDC Loan</b><br>Eligibility: PwD entrepreneurs<br>
+<a href="https://nhfdc.nic.in" target="_blank">Apply</a></div>
+<div class="card"><b>Skill India</b><br>Eligibility: PwD job seekers<br>
+<a href="https://skillindia.gov.in" target="_blank">Apply</a></div>
+<div class="card"><b>Employment Exchange</b><br>Eligibility: PwD<br>
+<a href="https://www.ncs.gov.in" target="_blank">Apply</a></div>
+<div class="card"><b>Ayushman Bharat</b><br>Eligibility: BPL PwD<br>
+<a href="https://www.pmjay.gov.in" target="_blank">Apply</a></div>
+<div class="card"><b>Housing Scheme</b><br>Eligibility: PwD families<br>
+<a href="https://pmaymis.gov.in" target="_blank">Apply</a></div>
+<div class="card"><b>Travel Concession</b><br>Eligibility: PwD certificate<br>
+<a href="https://www.india.gov.in" target="_blank">Apply</a></div>
+</section>
+
+<!-- NGOs -->
+<section id="ngo" class="section ngo">
+<h3>NGOs (Verified & Real)</h3>
+<div class="card">Enable India – <a href="https://www.enableindia.org" target="_blank">Visit</a></div>
+<div class="card">Deaf Foundation – <a href="https://www.deaffoundation.org" target="_blank">Visit</a></div>
+<div class="card">Amar Seva Sangam – <a href="https://www.amarseva.org" target="_blank">Visit</a></div>
+<div class="card">Sense India – <a href="https://www.senseindia.org" target="_blank">Visit</a></div>
+<div class="card">Vidya Sagar – <a href="https://www.vidyasagar.co.in" target="_blank">Visit</a></div>
+<div class="card">Action for Autism – <a href="https://www.autism-india.org" target="_blank">Visit</a></div>
+<div class="card">Spastics Society – <a href="https://www.spasticssocietyofindia.org" target="_blank">Visit</a></div>
+<div class="card">Helen Keller Institute – <a href="https://www.hkindia.org" target="_blank">Visit</a></div>
+<div class="card">Sankara Nethralaya – <a href="https://sankaranethralaya.org" target="_blank">Visit</a></div>
+</section>
+
+<!-- Schools -->
+<section id="school" class="section school">
+<h3>School Admission (Official Portals)</h3>
+<div class="card">Inclusive Education Portal – <a href="https://www.education.gov.in" target="_blank">Apply</a></div>
+<div class="card">Samagra Shiksha – <a href="https://samagra.education.gov.in" target="_blank">Apply</a></div>
+<div class="card">NAB Schools – <a href="https://www.nabindia.org" target="_blank">Apply</a></div>
+<div class="card">Spastics Society Schools – <a href="https://www.spasticssocietyofindia.org" target="_blank">Apply</a></div>
+<div class="card">Autism India Centres – <a href="https://www.autism-india.org" target="_blank">Apply</a></div>
+</section>
+
+<!-- Medicine -->
+<section id="medicine" class="section medicine">
+<h3>Medicine Ordering</h3>
+<button class="big-btn" onclick="go('https://www.1mg.com')">1mg</button>
+<button class="big-btn" onclick="go('https://pharmeasy.in')">PharmEasy</button>
+<button class="big-btn" onclick="go('https://www.apollopharmacy.in')">Apollo</button>
+<button class="big-btn" onclick="go('https://www.google.com/maps/search/medical+store+near+me')">Nearby Medical Store</button>
+</section>
+
+<!-- Reminder -->
+<section id="reminder" class="section reminder">
+<h3>Medicine Reminder</h3>
+<input id="med" placeholder="Medicine name">
+<input type="time" id="time">
+<button class="big-btn" onclick="alert('Reminder saved')">Save</button>
+</section>
+
+<!-- Emergency -->
+<section id="emergency" class="section emergency">
+<h3>Emergency</h3>
+<button class="big-btn flash" onclick="window.location.href='tel:112'">Emergency (112)</button>
+<button class="big-btn" onclick="window.location.href='tel:108'">Ambulance</button>
+<button class="big-btn" onclick="window.location.href='tel:100'">Police</button>
+<button class="big-btn" onclick="window.location.href='tel:1098'">Child Helpline</button>
+<button class="big-btn" onclick="window.location.href='tel:181'">Women Helpline</button>
+</section>
+
+<!-- Profile -->
+<section id="profile" class="section profile">
+<h3>Accessibility Profile</h3>
+<input placeholder="Name">
+<select>
+<option>Blind</option>
+<option>Deaf</option>
+<option>Physical Disability</option>
+<option>Multiple Disability</option>
+<option>Migraine</option>
+<option>Low Vision</option>
+</select>
+<button class="big-btn">Save</button>
+</section>
+
+<script>
+function openSec(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function startApp(){
+  document.getElementById('nav').style.display='flex';
+  openSec('stt');
+  let lang=document.getElementById('langSel').value;
+  let msg=lang=='ta-IN'?'வரவேற்கிறோம்':lang=='hi-IN'?'स्वागत है':'Welcome to Assistive System';
+  speakText(msg);
+  loadPhraseButtons();
+}
+
+// SPEECH
+function speakText(t){
+  let u=new SpeechSynthesisUtterance(t);
+  u.lang=document.getElementById('langSel').value;
+  speechSynthesis.speak(u);
+}
+
+// AUTO-PHRASES
+const phrasesMap = {
+  'en-IN': { help:'Help Me', water:'I Need Water', food:'I Need Food', emergency:'Emergency', call:'Call Someone' },
+  'ta-IN': { help:'எனக்கு உதவி வேண்டும்', water:'எனக்கு தண்ணீர் வேண்டும்', food:'எனக்கு உணவு வேண்டும்', emergency:'அவசரம்', call:'யாரையாவது அழைக்கவும்' },
+  'hi-IN': { help:'मुझे मदद चाहिए', water:'मुझे पानी चाहिए', food:'मुझे खाना चाहिए', emergency:'आपातकाल', call:'किसी को बुलाओ' }
+};
+
+function loadPhraseButtons(){
+  let lang = document.getElementById('langSel').value;
+  let container = document.getElementById('phraseBtns');
+  container.innerHTML = '';
+  for(let key in phrasesMap[lang]){
+    let btn = document.createElement('button');
+    btn.className='big-btn';
+    btn.innerText = phrasesMap[lang][key];
+    btn.onclick=()=>speakText(phrasesMap[lang][key]);
+    container.appendChild(btn);
+  }
+}
+
+// SPEECH TO TEXT
+function startSTT(){
+  let r=new (window.SpeechRecognition||window.webkitSpeechRecognition)();
+  r.lang=document.getElementById('langSel').value;
+  r.onresult=e=>sttOut.value=e.results[0][0].transcript;
+  r.start();
+}
+
+// TEXT TO SPEECH
+function speak(tt){
+  speakText(tt);
+}
+
+// NAVIGATE LINKS
+function go(u){window.open(u,'_blank')}
+</script>
+
+</body>
+</html>
